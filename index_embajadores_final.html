@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programa de Embajadores Fluxi - Tu guía completa para ganar comisiones recurrentes refiriendo clientes.">
+    <title>Programa de Embajadores | Fluxi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/images/icono-fluxi-zorro.webp">
+    <style>
+        :root {
+            --fox-blue: #2563eb;
+            --fox-blue-dark: #1e40af;
+            --fox-blue-light: #3b82f6;
+            --fox-cyan: #06b6d4;
+            --fox-gold: #f59e0b;
+            --fox-green: #10b981;
+            --fox-purple: #8b5cf6;
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --text-dark: #0f172a;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-medium: rgba(0, 0, 0, 0.12);
+            --gradient-blue: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+            --shadow-blue: 0 4px 20px rgba(37, 99, 235, 0.3);
+            --shadow-blue-lg: 0 8px 30px rgba(37, 99, 235, 0.4);
+            --shadow-gold: 0 4px 20px rgba(245, 158, 11, 0.3);
+            --container-max: 1100px;
+            --section-padding: 100px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 50% { transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+        .text-gradient { background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .text-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        /* Scroll animations */
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s var(--ease-out-expo); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        .animate-on-scroll.slide-right { transform: translateX(30px); }
+        .animate-on-scroll.slide-right.visible { transform: translateX(0); }
+        .animate-on-scroll.slide-left { transform: translateX(-30px); }
+        .animate-on-scroll.slide-left.visible { transform: translateX(0); }
+        .animate-on-scroll.pop { transform: scale(0.9); }
+        .animate-on-scroll.pop.visible { transform: scale(1); }
+        .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; } .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; } .stagger-5 { transition-delay: 0.5s; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+            box-shadow: var(--shadow-blue);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-blue-lg);
+        }
+        .btn-gold {
+            background: var(--gradient-gold);
+            color: white;
+            box-shadow: var(--shadow-gold);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--border-medium);
+            color: var(--text-dark);
+        }
+        .btn-outline:hover {
+            border-color: var(--fox-blue);
+            color: var(--fox-blue);
+            background: rgba(37, 99, 235, 0.04);
+        }
+        .btn-lg { padding: 16px 32px; font-size: 15px; border-radius: 14px; }
+        .btn i { font-size: 12px; transition: transform 0.3s ease; }
+        .btn:hover i { transform: translateX(3px); }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: fadeInDown 0.5s var(--ease-out-expo);
+        }
+        .nav-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .nav-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            padding: 6px 8px 6px 12px;
+            box-shadow: var(--shadow-sm);
+        }
+        .logo-mini {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .logo-mini:hover { transform: scale(1.1); }
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--border-light);
+            margin: 0 4px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-dark);
+            background: var(--bg-soft);
+        }
+        .nav-cta-btn {
+            background: var(--gradient-gold);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav-cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 4px 0;
+        }
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+        .mobile-logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .mobile-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .mobile-cta-btn {
+            background: var(--gradient-gold);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--shadow-gold);
+            transition: all 0.3s ease;
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 22px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .mobile-toggle:hover { background: var(--bg-soft); }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 24px;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.4s var(--ease-out-expo);
+            z-index: 999;
+            overflow-y: auto;
+        }
+        .mobile-menu.active { transform: translateX(0); opacity: 1; }
+        .mobile-links { display: flex; flex-direction: column; gap: 8px; }
+        .mobile-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 16px 20px;
+            border-radius: 14px;
+            transition: all 0.3s var(--ease-spring);
+        }
+        .mobile-links a:hover { background: var(--bg-soft); transform: translateX(8px); }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 60px;
+            position: relative;
+        }
+        .hero-content { max-width: 750px; margin: 0 auto; }
+        .hero-mascot {
+            margin-bottom: 24px;
+            animation: scaleIn 0.8s var(--ease-out-expo) 0.2s both;
+        }
+        .mascot-video {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+        }
+        .hero-sub {
+            font-size: clamp(15px, 2vw, 18px);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+            animation: fadeInUp 0.7s var(--ease-out-expo) 0.4s both;
+        }
+        .commission-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            border: 2px solid var(--fox-gold);
+            border-radius: 20px;
+            padding: 24px 36px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-gold);
+            animation: popIn 0.7s var(--ease-out-back) 0.5s both;
+        }
+        .commission-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(48px, 8vw, 64px);
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .commission-text {
+            text-align: left;
+        }
+        .commission-text strong {
+            display: block;
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        .commission-text span {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .terms-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            animation: fadeIn 0.5s ease 0.7s both;
+        }
+
+        /* ========== SECTIONS ========== */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+        .section-header p { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+        /* ========== BENEFICIOS ========== */
+        .beneficios { padding: var(--section-padding) 0; background: var(--bg-soft); }
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .beneficio-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s var(--ease-spring);
+            position: relative;
+            overflow: hidden;
+        }
+        .beneficio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        .beneficio-card.gold::before { background: var(--gradient-gold); }
+        .beneficio-card.blue::before { background: var(--gradient-blue); }
+        .beneficio-card.purple::before { background: var(--gradient-purple); }
+        .beneficio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .beneficio-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            transition: all 0.4s var(--ease-out-back);
+        }
+        .beneficio-card.gold .beneficio-icon {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--fox-gold);
+        }
+        .beneficio-card.blue .beneficio-icon {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--fox-blue);
+        }
+        .beneficio-card.purple .beneficio-icon {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--fox-purple);
+        }
+        .beneficio-card:hover .beneficio-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .beneficio-card.gold:hover .beneficio-icon { background: var(--gradient-gold); color: white; }
+        .beneficio-card.blue:hover .beneficio-icon { background: var(--gradient-blue); color: white; }
+        .beneficio-card.purple:hover .beneficio-icon { background: var(--gradient-purple); color: white; }
+        .beneficio-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        .beneficio-list {
+            list-style: none;
+        }
+        .beneficio-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .beneficio-list li:last-child { border-bottom: none; }
+        .beneficio-list li i {
+            color: var(--fox-green);
+            font-size: 12px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* ========== POSTULATE ========== */
+        .postulate { padding: 80px 0; }
+        .postulate-box {
+            background: linear-gradient(135deg, var(--fox-blue) 0%, var(--fox-blue-dark) 100%);
+            border-radius: 28px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .postulate-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        .postulate-box::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+        .postulate-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        .postulate-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .postulate-content p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 500px;
+        }
+        .postulate-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--fox-blue);
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .postulate-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+        .postulate-cta i { transition: transform 0.3s ease; }
+        .postulate-cta:hover i { transform: translateX(4px); }
+        .postulate-image {
+            position: relative;
+            z-index: 1;
+        }
+        .postulate-image img {
+            width: 200px;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        /* ========== COMO FUNCIONA ========== */
+        .como-funciona { padding: var(--section-padding) 0; background: var(--bg-soft); }
+        
+        /* Subsection styling */
+        .subsection {
+            margin-bottom: 80px;
+        }
+        .subsection:last-child { margin-bottom: 0; }
+        .subsection-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .subsection-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            background: var(--gradient-blue);
+            padding: 6px 14px;
+            border-radius: 100px;
+        }
+        .subsection-header h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Aprobación */
+        .aprobacion-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border-light);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .aprobacion-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--fox-green);
+            flex-shrink: 0;
+        }
+        .aprobacion-content h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        .aprobacion-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .aprobacion-content .highlight-box {
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid var(--fox-blue);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        /* Registro Steps */
+        .registro-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .registro-visual {
+            position: sticky;
+            top: 100px;
+            text-align: center;
+        }
+        .registro-visual img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+        }
+        .registro-steps { display: flex; flex-direction: column; gap: 20px; }
+        .registro-step {
+            padding: 28px;
+            border-radius: 18px;
+            background: white;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s var(--ease-spring);
+            cursor: pointer;
+        }
+        .registro-step:hover, .registro-step.active {
+            border-color: var(--fox-blue);
+            box-shadow: var(--shadow-blue);
+            transform: translateX(8px);
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        .step-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .registro-step h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .registro-step p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            padding-left: 52px;
+        }
+        .registro-step .highlight {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+            color: var(--fox-blue);
+            font-weight: 600;
+        }
+
+        /* Dashboard Section */
+        .dashboard-preview {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            margin-bottom: 40px;
+        }
+        .dashboard-preview img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+        }
+        .metrics-explanation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .metric-group {
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            border: 1px solid var(--border-light);
+        }
+        .metric-group h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .metric-group h4 i {
+            color: var(--fox-blue);
+        }
+        .metric-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .metric-item:last-child { border-bottom: none; }
+        .metric-item i {
+            color: var(--fox-gold);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .metric-item strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .metric-item span {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .nav-tab-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s var(--ease-spring);
+            cursor: pointer;
+        }
+        .nav-tab-card:hover {
+            border-color: var(--fox-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-tab-card.active {
+            border-color: var(--fox-blue);
+            background: rgba(37, 99, 235, 0.04);
+        }
+        .nav-tab-card i {
+            font-size: 28px;
+            color: var(--fox-blue);
+            margin-bottom: 12px;
+        }
+        .nav-tab-card h5 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .nav-tab-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .nav-screenshot {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+        .nav-screenshot img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+        .nav-screenshot-caption {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Referral Link */
+        .referral-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .referral-tips {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .referral-tip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+        .referral-tip:hover {
+            border-color: var(--fox-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateX(6px);
+        }
+        .referral-tip i {
+            font-size: 20px;
+            color: var(--fox-blue);
+        }
+        .referral-tip span {
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+        .referral-visual img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+        }
+
+        /* Requisitos */
+        .requisitos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .requisito-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 32px 28px;
+            text-align: center;
+            transition: all 0.4s var(--ease-spring);
+            position: relative;
+            overflow: hidden;
+        }
+        .requisito-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-blue);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .requisito-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .requisito-card:hover::before { transform: scaleX(1); }
+        .requisito-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(37, 99, 235, 0.08);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--fox-blue);
+            margin: 0 auto 20px;
+            transition: all 0.4s var(--ease-out-back);
+        }
+        .requisito-card:hover .requisito-icon {
+            background: var(--gradient-blue);
+            color: white;
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .requisito-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        .requisito-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .requisito-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .requisito-badge.required {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--fox-blue);
+        }
+
+        /* Pagos Section */
+        .pagos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+        .pago-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s var(--ease-spring);
+        }
+        .pago-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .pago-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--fox-blue);
+            margin-bottom: 20px;
+        }
+        .pago-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        .pago-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .ejemplo-box {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            border: 2px solid var(--fox-blue);
+            box-shadow: var(--shadow-blue);
+        }
+        .ejemplo-box h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ejemplo-box h4 i { color: var(--fox-blue); }
+        .ejemplo-box > p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .ejemplo-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .ejemplo-step {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            padding: 24px 16px;
+            background: var(--bg-soft);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .ejemplo-step:hover {
+            background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-4px);
+        }
+        .ejemplo-date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--fox-blue);
+            margin-bottom: 8px;
+        }
+        .ejemplo-action {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .ejemplo-arrow {
+            font-size: 24px;
+            color: var(--fox-gold);
+        }
+
+        /* Contacto & FAQ */
+        .contacto-faq { padding: var(--section-padding) 0; }
+        .contacto-box {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .contacto-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-blue);
+        }
+        .contacto-mascot {
+            width: 120px;
+            margin-bottom: 24px;
+        }
+        .contacto-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        .contacto-box p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+        .contacto-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--shadow-blue);
+            transition: all 0.3s ease;
+        }
+        .contacto-email:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-blue-lg);
+        }
+
+        /* FAQ Accordion */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 32px;
+        }
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: var(--fox-blue);
+        }
+        .faq-item.active {
+            border-color: var(--fox-blue);
+            box-shadow: var(--shadow-blue);
+        }
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            color: var(--fox-blue);
+        }
+        .faq-question i {
+            font-size: 14px;
+            color: var(--fox-blue);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        .faq-answer-content {
+            padding: 0 24px 24px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 32px 0;
+            border-top: 1px solid var(--border-light);
+            background: var(--bg-soft);
+        }
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .footer-logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .footer-copy { color: var(--text-muted); font-size: 14px; }
+        .footer-terms {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1000px) {
+            .beneficios-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 900px) {
+            .nav-pill { display: none; }
+            .mobile-header { display: flex; }
+            .mobile-menu { display: block; }
+            .mobile-toggle { display: block; }
+            
+            .postulate-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 30px;
+            }
+            .postulate-content p { max-width: 100%; }
+            .postulate-image { order: -1; }
+            .postulate-image img { width: 150px; }
+            
+            .registro-container {
+                grid-template-columns: 1fr;
+            }
+            .registro-visual { position: static; order: -1; margin-bottom: 40px; }
+            
+            .referral-container {
+                grid-template-columns: 1fr;
+            }
+            .referral-visual { order: -1; margin-bottom: 24px; }
+            
+            .aprobacion-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .ejemplo-arrow { display: none; }
+        }
+        @media (max-width: 600px) {
+            .hero { padding: 80px 20px 50px; }
+            .hero-logo { max-width: 280px; }
+            .mascot-video { max-width: 240px; }
+            .commission-box {
+                flex-direction: column;
+                padding: 24px;
+                gap: 12px;
+            }
+            .commission-text { text-align: center; }
+            
+            .registro-step p { padding-left: 0; margin-top: 8px; }
+            
+            .ejemplo-timeline { flex-direction: column; }
+            .ejemplo-step { width: 100%; }
+            
+            .contacto-box { padding: 40px 24px; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+
+        ::selection { background: rgba(37, 99, 235, 0.2); color: var(--text-dark); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-soft); }
+        ::-webkit-scrollbar-thumb { background: var(--fox-blue); border-radius: 8px; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Desktop Nav -->
+        <div class="nav-container">
+            <div class="nav-pill">
+                <div class="logo-mini"><img src="assets/images/icono-fluxi-zorro.webp" alt="Fluxi" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                <div class="nav-divider"></div>
+                <div class="nav-links">
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#postulate">Postúlate</a>
+                    <a href="#como-funciona">Cómo Funciona</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="nav-divider"></div>
+                <a href="#postulate" class="nav-cta-btn">Quiero ser Embajador</a>
+            </div>
+        </div>
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <a href="#" class="mobile-logo">
+                <div class="mobile-logo-icon"><img src="assets/images/icono-fluxi-zorro.webp" alt="Fluxi" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                Embajadores
+            </a>
+            <div class="mobile-nav-right">
+                <a href="#postulate" class="mobile-cta-btn">Postúlate</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menú"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-links">
+            <a href="#beneficios">Beneficios</a>
+            <a href="#postulate">Postúlate</a>
+            <a href="#como-funciona">Cómo Funciona</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-mascot">
+                <video class="mascot-video" id="mascotVideo" autoplay loop muted playsinline>
+                    <source src="assets/fluxi-mascot.webm" type="video/webm">
+                </video>
+            </div>
+            <p class="hero-sub">Tu comunidad confía en ti. Dales la herramienta definitiva para vender online. Gana comisiones recurrentes mientras tu referido mantenga su suscripción activa.</p>
+            
+            <div class="commission-box">
+                <div class="commission-number">%</div>
+                <div class="commission-text">
+                    <strong>Comisión Recurrente</strong>
+                    <span>Por cada cliente que refieras, mes a mes*</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="beneficios" id="beneficios">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Beneficios del Programa</h2>
+                <p>Únete al equipo ganador. Descubre todo lo que obtienes al convertirte en embajador de Fluxi.</p>
+            </div>
+
+            <div class="beneficios-grid">
+                <!-- Beneficio 1: Comisiones -->
+                <div class="beneficio-card gold animate-on-scroll pop">
+                    <div class="beneficio-icon"><i class="fa-solid fa-coins"></i></div>
+                    <h3>Comisiones Vitalicias*</h3>
+                    <ul class="beneficio-list">
+                        <li><i class="fa-solid fa-check"></i> Modelo recurrente: Gana un porcentaje mes a mes por cada usuario activo que traigas</li>
+                        <li><i class="fa-solid fa-check"></i> Sin techo: Tus ingresos crecen a medida que tu comunidad de referidos crece</li>
+                        <li><i class="fa-solid fa-check"></i> Pagos mensuales vía PayPal el día 1 de cada mes</li>
+                    </ul>
+                </div>
+
+                <!-- Beneficio 2: Exposición -->
+                <div class="beneficio-card blue animate-on-scroll pop stagger-1">
+                    <div class="beneficio-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3>Exposición ante la Comunidad Fluxi</h3>
+                    <ul class="beneficio-list">
+                        <li><i class="fa-solid fa-check"></i> Imparte una Masterclass en Fluxi Academy con CTA a tus propios productos</li>
+                        <li><i class="fa-solid fa-check"></i> Prioridad para participar en el podcast de Fluxi y co-crear contenido</li>
+                        <li><i class="fa-solid fa-check"></i> Oportunidades como Speaker y descuentos en patrocinios de eventos</li>
+                        <li><i class="fa-solid fa-check"></i> Sello oficial de Partner Fluxi Certificado</li>
+                    </ul>
+                </div>
+
+                <!-- Beneficio 3: Cocreadores -->
+                <div class="beneficio-card purple animate-on-scroll pop stagger-2">
+                    <div class="beneficio-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Co-Creadores y Acceso VIP</h3>
+                    <ul class="beneficio-list">
+                        <li><i class="fa-solid fa-check"></i> Sello Partner Certificado: Reconocimiento oficial en la plataforma</li>
+                        <li><i class="fa-solid fa-check"></i> Voz en el Producto: Tus sugerencias se priorizan en futuras actualizaciones</li>
+                        <li><i class="fa-solid fa-check"></i> Acceso Directo: Canal directo con el equipo fundador y soporte preferencial</li>
+                        <li><i class="fa-solid fa-check"></i> Acceso anticipado a nuevas funciones antes que nadie</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSTÚLATE -->
+    <section class="postulate" id="postulate">
+        <div class="container">
+            <div class="postulate-box animate-on-scroll">
+                <div class="postulate-content">
+                    <h2>Tu Influencia + Nuestra Tecnología = Crecimiento Explosivo</h2>
+                    <p>¿Listo para monetizar tu comunidad con la herramienta #1 de E-commerce? Postúlate para ser embajador de Fluxi. Completa el formulario y nuestro equipo revisará tu aplicación.</p>
+                    <a href="https://script.google.com/a/macros/neuropublico.com/s/AKfycbw6HbvQQUhgvfXmucEIEOZ0k0EZf_JyNmo0y-ApxUKe1Oo2jbFA11ocStlrePaWyaeE/exec" class="postulate-cta" id="postulateBtn" target="_blank">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Únete al Programa de Embajadores
+                    </a>
+                </div>
+                <div class="postulate-image">
+                    <img src="assets/images/fluxi-fox-static.webp" alt="Fluxi">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="como-funciona" id="como-funciona">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Cómo Funciona</h2>
+                <p>Todo lo que necesitas saber para empezar a ganar como embajador.</p>
+            </div>
+
+            <!-- 3.1 Aprobación -->
+            <div class="subsection animate-on-scroll">
+                <div class="subsection-header">
+                    <span class="subsection-number">3.1</span>
+                    <h3>Aprobación</h3>
+                </div>
+                <div class="aprobacion-box">
+                    <div class="aprobacion-icon">
+                        <i class="fa-solid fa-envelope-circle-check"></i>
+                    </div>
+                    <div class="aprobacion-content">
+                        <h4>Recibirás un correo de bienvenida</h4>
+                        <p>Una vez que tu postulación sea aprobada, recibirás un correo electrónico de confirmación con toda la información necesaria para comenzar.</p>
+                        <div class="highlight-box">
+                            <strong>Importante:</strong> En el correo encontrarás un enlace personalizado para inscribirte en First Promoter, nuestra plataforma de gestión de referidos donde podrás hacer seguimiento a tus comisiones.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.2 Cómo Registrarte -->
+            <div class="subsection animate-on-scroll">
+                <div class="subsection-header">
+                    <span class="subsection-number">3.2</span>
+                    <h3>Cómo Registrarte</h3>
+                </div>
+                
+                <div class="registro-container">
+                    <div class="registro-visual">
+                        <img src="assets/images/capture1.png" alt="Portal de registro Fluxi Embajadores">
+                    </div>
+
+                    <div class="registro-steps">
+                        <div class="registro-step active">
+                            <div class="step-header">
+                                <div class="step-number">01</div>
+                                <h4>Accede al portal</h4>
+                            </div>
+                            <p>Ingresa al enlace personalizado que recibiste en tu correo de aprobación.</p>
+                        </div>
+
+                        <div class="registro-step">
+                            <div class="step-header">
+                                <div class="step-number">02</div>
+                                <h4>Conecta con Google</h4>
+                            </div>
+                            <p>Haz clic en <span class="highlight">"Continue with Google"</span> y selecciona tu cuenta Gmail. <strong>Importante:</strong> Usa la misma cuenta con la que te postulaste.</p>
+                        </div>
+
+                        <div class="registro-step">
+                            <div class="step-header">
+                                <div class="step-number">03</div>
+                                <h4>¡Listo para ganar!</h4>
+                            </div>
+                            <p>Tu perfil de embajador se crea automáticamente. Ya puedes acceder a tu dashboard y comenzar a referir clientes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard -->
+                <div style="margin-top: 60px;">
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--text-dark);">Tu Dashboard</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px;">Después de registrarte, accederás a tu panel de control con toda la información sobre tu actividad.</p>
+                    
+                    <div class="dashboard-preview">
+                        <img src="assets/images/capture2.png" alt="Dashboard principal de embajadores Fluxi">
+                    </div>
+
+                    <div class="metrics-explanation">
+                        <div class="metric-group">
+                            <h4><i class="fa-solid fa-chart-pie"></i> Resumen Financiero</h4>
+                            <div class="metric-item">
+                                <i class="fa-solid fa-circle"></i>
+                                <div>
+                                    <strong>Due in 30 days</strong>
+                                    <span>Monto a recibir en el próximo ciclo de pago.</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <i class="fa-solid fa-circle"></i>
+                                <div>
+                                    <strong>Total Unpaid</strong>
+                                    <span>Comisiones pendientes de validación (menos de 30 días).</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <i class="fa-solid fa-circle"></i>
+                                <div>
+                                    <strong>Total Paid</strong>
+                                    <span>Total histórico que has recibido por comisiones.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-group">
+                            <h4><i class="fa-solid fa-chart-line"></i> Métricas de Rendimiento</h4>
+                            <div class="metric-item">
+                                <i class="fa-solid fa-circle"></i>
+                                <div>
+                                    <strong>Clicks</strong>
+                                    <span>Personas que hicieron clic en tu enlace de referido.</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <i class="fa-solid fa-circle"></i>
+                                <div>
+                                    <strong>Referrals</strong>
+                                    <span>Usuarios que se registraron usando tu enlace.</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <i class="fa-solid fa-circle"></i>
+                                <div>
+                                    <strong>Customers</strong>
+                                    <span>Referidos que completaron una suscripción de pago.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Menú de Navegación -->
+                    <h4 style="font-size: 18px; font-weight: 700; margin: 40px 0 20px; color: var(--text-dark);">Menú de Navegación</h4>
+                    <div class="nav-tabs-grid">
+                        <div class="nav-tab-card active" data-tab="referrals">
+                            <i class="fa-solid fa-users"></i>
+                            <h5>Referrals</h5>
+                            <p>Lista de tus referidos</p>
+                        </div>
+                        <div class="nav-tab-card" data-tab="commissions">
+                            <i class="fa-solid fa-coins"></i>
+                            <h5>Commissions</h5>
+                            <p>Historial de comisiones</p>
+                        </div>
+                        <div class="nav-tab-card" data-tab="payouts">
+                            <i class="fa-solid fa-wallet"></i>
+                            <h5>Payouts</h5>
+                            <p>Pagos recibidos</p>
+                        </div>
+                        <div class="nav-tab-card" data-tab="assets">
+                            <i class="fa-solid fa-photo-film"></i>
+                            <h5>Assets</h5>
+                            <p>Materiales promocionales</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-screenshot">
+                        <img src="assets/images/capture3.png" alt="Vista de Referrals" id="nav-screenshot-img">
+                        <p class="nav-screenshot-caption" id="nav-screenshot-caption">
+                            <strong>Referrals:</strong> Aquí puedes ver tus customers activos y las personas que no completaron el checkout.
+                        </p>
+                    </div>
+
+                    <!-- Tu enlace de referido -->
+                    <div style="margin-top: 60px;">
+                        <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--text-dark);">Tu Enlace de Referido</h4>
+                        <div class="referral-container">
+                            <div class="referral-info">
+                                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">En la sección <strong>"Referral links"</strong> encontrarás tu enlace único de embajador. Cada venta realizada a través de tu enlace se registra automáticamente en tu cuenta.</p>
+                                
+                                <div class="referral-tips">
+                                    <div class="referral-tip">
+                                        <i class="fa-solid fa-copy"></i>
+                                        <span>Usa el ícono de copiar para obtener el enlace directo</span>
+                                    </div>
+                                    <div class="referral-tip">
+                                        <i class="fa-brands fa-twitter"></i>
+                                        <span>Comparte en Twitter con el botón integrado</span>
+                                    </div>
+                                    <div class="referral-tip">
+                                        <i class="fa-brands fa-facebook"></i>
+                                        <span>Comparte en Facebook con un solo clic</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="referral-visual">
+                                <img src="assets/images/capture4.png" alt="Enlace de referido personalizado">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.3 Qué Necesitas -->
+            <div class="subsection animate-on-scroll">
+                <div class="subsection-header">
+                    <span class="subsection-number">3.3</span>
+                    <h3>Qué Necesitas para Empezar</h3>
+                </div>
+                
+                <div class="requisitos-grid">
+                    <div class="requisito-card">
+                        <div class="requisito-icon"><i class="fa-brands fa-google"></i></div>
+                        <h4>Cuenta de Google</h4>
+                        <p>Necesitas un Gmail para registrarte en el portal de embajadores y acceder a tu dashboard personal.</p>
+                        <span class="requisito-badge required">Obligatorio</span>
+                    </div>
+
+                    <div class="requisito-card">
+                        <div class="requisito-icon"><i class="fa-brands fa-paypal"></i></div>
+                        <h4>Cuenta de PayPal</h4>
+                        <p>Todas las comisiones se depositan vía PayPal. Asegúrate de tener una cuenta activa y verificada.</p>
+                        <span class="requisito-badge required">Obligatorio</span>
+                    </div>
+
+                    <div class="requisito-card">
+                        <div class="requisito-icon"><i class="fa-solid fa-user-check"></i></div>
+                        <h4>Postulación Aprobada</h4>
+                        <p>Debes completar el formulario de postulación y ser aprobado por nuestro equipo.</p>
+                        <span class="requisito-badge required">Obligatorio</span>
+                    </div>
+
+                    <div class="requisito-card">
+                        <div class="requisito-icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <h4>Contrato Firmado</h4>
+                        <p>Una vez aprobada tu postulación, recibirás tu contrato de embajador por correo. Revísalo, fírmalo y envíalo de vuelta para activar tu acceso.</p>
+                        <span class="requisito-badge required">Obligatorio</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.4 Términos de Pago -->
+            <div class="subsection animate-on-scroll">
+                <div class="subsection-header">
+                    <span class="subsection-number">3.4</span>
+                    <h3>Términos de Pago</h3>
+                </div>
+
+                <div class="pagos-grid">
+                    <div class="pago-card">
+                        <div class="pago-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h4>Ciclo de Pago</h4>
+                        <p>Los pagos se ejecutan el <strong>día 1 de cada mes</strong>. Recibirás todas tus comisiones validadas en una sola transferencia.</p>
+                    </div>
+
+                    <div class="pago-card">
+                        <div class="pago-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <h4>Período de Validación</h4>
+                        <p>Solo se pagan comisiones de suscripciones con <strong>al menos 30 días activas</strong>. Esto confirma que la suscripción es válida.*</p>
+                    </div>
+
+                    <div class="pago-card">
+                        <div class="pago-icon"><i class="fa-brands fa-paypal"></i></div>
+                        <h4>Método de Pago</h4>
+                        <p>Todas las comisiones se depositan vía <strong>PayPal</strong>. Configura tu método de pago en la sección Payouts.</p>
+                    </div>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h4><i class="fa-solid fa-lightbulb"></i> Ejemplo Práctico</h4>
+                    <p>Así funciona el ciclo completo desde que tu referido se suscribe hasta que recibes el pago:</p>
+                    
+                    <div class="ejemplo-timeline">
+                        <div class="ejemplo-step">
+                            <div class="ejemplo-date">15 Enero</div>
+                            <div class="ejemplo-action">Cliente se suscribe</div>
+                        </div>
+                        <span class="ejemplo-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        <div class="ejemplo-step">
+                            <div class="ejemplo-date">14 Febrero</div>
+                            <div class="ejemplo-action">Comisión se valida</div>
+                        </div>
+                        <span class="ejemplo-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        <div class="ejemplo-step">
+                            <div class="ejemplo-date">1 Marzo</div>
+                            <div class="ejemplo-action">Recibes el pago 💸</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.5 Dudas y FAQ -->
+            <div class="subsection animate-on-scroll" id="faq">
+                <div class="subsection-header">
+                    <span class="subsection-number">3.5</span>
+                    <h3>¿Tienes Dudas?</h3>
+                </div>
+
+                <div class="contacto-box">
+                    <img src="assets/images/fluxi-fox-static.webp" alt="Fluxi" class="contacto-mascot">
+                    <h3>Contáctanos</h3>
+                    <p>Si tienes preguntas sobre el programa de embajadores, comisiones o pagos, escríbenos.</p>
+                    <a href="mailto:finance@neuropublico.com" class="contacto-email">
+                        <i class="fa-solid fa-envelope"></i>
+                        finance@neuropublico.com
+                    </a>
+                </div>
+
+                <div class="faq-section">
+                    <h4 class="faq-title">Preguntas Frecuentes</h4>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Qué pasa si mi referido cancela o pide reembolso?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Si un referido cancela su suscripción o solicita un reembolso dentro de los primeros 30 días, la comisión no se genera. Por eso aplicamos un periodo de validación de 30 días antes de confirmar cada comisión. Si el reembolso ocurre después de ese periodo, la comisión ya pagada no se revierte, pero dejarás de recibir comisiones futuras por ese cliente.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿La comisión es solo por la primera compra o es recurrente?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Es recurrente. Recibes el porcentaje correspondiente de cada pago que realice tu referido mientras mantenga su suscripción activa. Si un cliente permanece suscrito 12 meses, recibes 12 comisiones. Si permanece 3 años, recibes 36 comisiones.*
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Cuándo y cómo recibo mis pagos?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Los pagos se ejecutan el día 1 de cada mes vía PayPal. Solo se incluyen las comisiones de suscripciones que hayan cumplido al menos 30 días activas. Asegúrate de tener tu cuenta de PayPal configurada en tu dashboard para recibir tus pagos sin retrasos.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon"><img src="assets/images/icono-fluxi-zorro.webp" alt="Fluxi" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                    Fluxi Embajadores
+                </div>
+                <p class="footer-copy">© 2026 Fluxi AI — Programa de Embajadores</p>
+            </div>
+            <p class="footer-terms">*Aplican términos y condiciones.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+        document.querySelectorAll('.mobile-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-xmark');
+            });
+        });
+
+        // Video speed
+        const mascotVideo = document.getElementById('mascotVideo');
+        if (mascotVideo) {
+            mascotVideo.playbackRate = 1.5;
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Nav tabs functionality
+        const navTabs = document.querySelectorAll('.nav-tab-card');
+        const screenshotImg = document.getElementById('nav-screenshot-img');
+        const screenshotCaption = document.getElementById('nav-screenshot-caption');
+        
+        const tabData = {
+            referrals: {
+                img: 'assets/images/capture3.png',
+                caption: '<strong>Referrals:</strong> Aquí puedes ver tus customers activos y las personas que no completaron el checkout.'
+            },
+            commissions: {
+                img: 'assets/images/capture5.png',
+                caption: '<strong>Commissions:</strong> Historial completo de todas tus comisiones generadas.'
+            },
+            payouts: {
+                img: 'assets/images/capture6.png',
+                caption: '<strong>Payouts:</strong> Registra tu método de pago y revisa el historial de pagos recibidos.'
+            },
+            assets: {
+                img: 'assets/images/capture7.png',
+                caption: '<strong>Assets:</strong> Materiales promocionales listos para usar en tus campañas.'
+            }
+        };
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                navTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const tabName = tab.dataset.tab;
+                screenshotImg.src = tabData[tabName].img;
+                screenshotCaption.innerHTML = tabData[tabName].caption;
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Registro steps interaction
+        const registroSteps = document.querySelectorAll('.registro-step');
+        registroSteps.forEach(step => {
+            step.addEventListener('click', () => {
+                registroSteps.forEach(s => s.classList.remove('active'));
+                step.classList.add('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
